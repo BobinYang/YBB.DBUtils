@@ -1,18 +1,30 @@
 # YBB.DBUtils
-数据库连接工具，兼容ADO、ADO.NET方式访问，支持Oracle（不需要安装客户端）、SQL Server、OleDb和ODBC等数据库。
+通用数据访问类库，兼容ADO、ADO.NET方式访问。
+利用ProviderFactory工厂方法，支持Oracle（不需要安装客户端）、SQL Server、OleDb和ODBC等数据库访问。
 
 //用法：
-// 1、初始化线程缓存AdoNetHelper 类：
+// 0、初始化线程缓存AdoNetHelper 类：
 
-            public class ProviderBase
+Oracle:
+           using (AdoNetHelper   Db = AdoNetHelper.ThreadInstance("data source=*:1521/orcl;user id=*;password=*;", DbProviderType.Oracle_ManagedODP)))
             {
-                protected static AdoNetHelper Db;
- 
-                static ProviderBase()
-                {
-                    DbIMS = AdoNetHelper.ThreadInstance("data source=*:1521/orcl;user id=*;password=*;", DbProviderType.Oracle_ManagedODP);
-                }
+            。。。。。
             }
+
+SQL Server:          
+           using (AdoNetHelper   Db = AdoNetHelper.ThreadInstance("data source=*;user id=sa;password=*;Initial Catalog=*;", DbProviderType.SqlServer)))
+            {
+            。。。。。
+            }//Dispose可关闭所有内部连接。
+            
+//1、常用的命令：
+            Db.OpenNewConnection()
+            Db.CreateNewCommand(sql, conn)
+            Db.BeginNewTrans(conn)
+            Db.CreateNewCommand(sql, trans);
+            Db.MakeInParam(":a", **)
+            以及所有DbHelper中的方法。
+
  
 //2、打开连接和创建命令，执行读数据
 
@@ -33,10 +45,6 @@
                 //       List1.Add(dr[0].ToString().Trim());
                 //  }
                 dr.Close();
-            }
-            catch (Exception)
-            {
-                throw;
             }
             finally
             {
@@ -123,7 +131,6 @@
             command.Parameters.Add(Db.MakeInParam("line", Line));
             command.Parameters.Add(Db.MakeInParam("model", PartNumber));
 
- 
             DbParameter qty = Db.MakeOutParam("qty", 0);
             qty.Direction = ParameterDirection.Output;
             command.Parameters.Add(qty);
