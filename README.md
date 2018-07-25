@@ -23,6 +23,7 @@ SQL Server:
             Db.BeginNewTrans(conn)
             Db.CreateNewCommand(sql, trans);
             Db.MakeInParam(":a", **)
+			DataSet ds = Db.ExecuteDataset(conn, "GetOrders", 24, 36); 
             以及所有DbHelper中的方法。
 
  
