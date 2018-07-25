@@ -1,0 +1,13 @@
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\bin\Debug\YBB.DBUtils.Tests.dll
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\bin\Debug\YBB.DBUtils.Tests.pdb
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\bin\Debug\YBB.DBUtils.dll
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\bin\Debug\YBB.DBUtils.pdb
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\bin\Debug\YBB.DBUtils.xml
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\obj\Debug\YBB.DBUtils.Tests.csprojResolveAssemblyReference.cache
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\obj\Debug\YBB.DBUtils.Tests.dll
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils.Tests\obj\Debug\YBB.DBUtils.Tests.pdb
+D:\localGithub\YBB.DBUtils\YBB.DBUtils.Tests\bin\Debug\YBB.DBUtils.Tests.dll
+D:\localGithub\YBB.DBUtils\YBB.DBUtils.Tests\bin\Debug\YBB.DBUtils.Tests.pdb
+D:\localGithub\YBB.DBUtils\YBB.DBUtils.Tests\obj\Debug\YBB.DBUtils.Tests.csprojResolveAssemblyReference.cache
+D:\localGithub\YBB.DBUtils\YBB.DBUtils.Tests\obj\Debug\YBB.DBUtils.Tests.dll
+D:\localGithub\YBB.DBUtils\YBB.DBUtils.Tests\obj\Debug\YBB.DBUtils.Tests.pdb

@@ -1,0 +1,17 @@
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\bin\Debug\YBB.DBUtils.dll.config
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\bin\Debug\YBB.DBUtils.xml
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\bin\Debug\YBB.DBUtils.dll
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\bin\Debug\YBB.DBUtils.pdb
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\bin\Debug\adodb.dll
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\bin\Debug\log4net.dll
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\obj\Debug\YBB.DBUtils.dll
+N:\09 工作\03 新源\1、IMS\1、接口开发\GPE.DBUtils\GPE.DBUtils4\obj\Debug\YBB.DBUtils.pdb
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\bin\Debug\YBB.DBUtils.dll.config
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\bin\Debug\YBB.DBUtils.xml
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\bin\Debug\YBB.DBUtils.dll
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\bin\Debug\YBB.DBUtils.pdb
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\bin\Debug\adodb.dll
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\bin\Debug\log4net.dll
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\obj\Debug\YBB.DBUtils4.csprojResolveAssemblyReference.cache
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\obj\Debug\YBB.DBUtils.dll
+D:\localGithub\YBB.DBUtils\YBB.DBUtils4\obj\Debug\YBB.DBUtils.pdb

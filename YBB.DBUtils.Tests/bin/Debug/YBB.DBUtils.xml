@@ -1,0 +1,1120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YBB.DBUtils</name>
+    </assembly>
+    <members>
+        <member name="T:YBB.DBUtils.AdoHelper">
+            <summary>
+            ADO连接的一个帮助类。
+            </summary>
+        </member>
+        <member name="T:YBB.DBUtils.IThreadInstance">
+            <summary>
+            方便可以dispose all，而不用理会具体
+            </summary>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.ThreadInstance(System.String,YBB.DBUtils.DbProviderType)">
+            <summary>
+            创建AdoHelper子类。
+            </summary>
+            <typeparam name="T">AdoNetHelper 的子类</typeparam>
+            <param name="userName">数据库用户名</param>
+            <param name="dbname">数据库实例名</param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.ThreadInstance(System.String,YBB.DBUtils.DbProviderType,System.Boolean)">
+            <summary>
+            创建AdoNetHelper子类。
+            </summary>
+            <typeparam name="T">AdoNetHelper 的子类</typeparam>
+            <param name="userName">数据库用户名</param>
+            <param name="dbname">数据库实例名</param>
+            <param name="createIfNull">如果不存在那么创建</param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.GetNewConnection">
+            <summary>
+            创建一个新的数据库连接。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.Connection">
+            <summary>
+            获取一个数据库连接，如果之前已经获取过，那么返回之前的对象，否者创建一个连接，如果之前的连接已经关闭，从新打开连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.GetOrBeginTrans">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.CloseDatabase(ADODB.Connection)">
+            <summary>
+            关闭一个数据库连接
+            </summary>
+            <param name="conn"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.OnDbOpenedByUser(ADODB.Connection)">
+             <summary>
+            
+             </summary>
+             <param name="conn"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.OnDbClosedByUser(ADODB.Connection)">
+             <summary>
+            
+             </summary>
+             <param name="conn"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoHelper.Dispose">
+            <summary>
+            释放资源，将关闭所有GetNewAdoConnection,GetConnection打开的数据库连接。
+            </summary>
+        </member>
+        <member name="E:YBB.DBUtils.AdoHelper.DbOpenedByUser">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="E:YBB.DBUtils.AdoHelper.DbClosedByUser">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:YBB.DBUtils.AdoHelper.ConnectionString">
+            <summary>
+            连接字符串。
+            </summary>
+        </member>
+        <member name="T:YBB.DBUtils.AdoNetHelper">
+            <summary>
+            抽象类 实现了ADONET常用方法。
+            </summary>
+        </member>
+        <member name="T:YBB.DBUtils.DbHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.CacheParameterSet(System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.CreateCommand(System.Data.Common.DbConnection,System.String,System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="sourceColumns"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.Common.DbConnection,System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.Common.DbConnection,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.Common.DbTransaction,System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.Common.DbTransaction,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.Common.DbConnection,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDataset(System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDatasetTypedParams(System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDatasetTypedParams(System.Data.Common.DbConnection,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteDatasetTypedParams(System.Data.Common.DbTransaction,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.Common.DbConnection,System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.Common.DbConnection,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.Common.DbTransaction,System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.Common.DbTransaction,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQuery(System.Data.Common.DbConnection,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQueryTypedParams(System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQueryTypedParams(System.Data.Common.DbConnection,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteNonQueryTypedParams(System.Data.Common.DbTransaction,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.CommandType,System.String)">
+            <summary>
+            读取完后自动关闭连接
+            </summary>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+            <summary>
+            读取完后自动关闭连接
+            </summary>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <param name="commandParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.Common.DbConnection,System.Data.CommandType,System.String)">
+            <summary>
+            读取完后不会自动关闭连接，需要手工关闭
+            </summary>
+            <param name="connection"></param>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.Common.DbConnection,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.Common.DbTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            读取完后不会自动关闭连接，需要手工关闭
+            </summary>
+            <param name="transaction"></param>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.Common.DbTransaction,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.Common.DbConnection,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+            <summary>
+            读取完后不会自动关闭连接，需要手工关闭
+            </summary>
+            <param name="connection"></param>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <param name="commandParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+            <summary>
+            读取完后不会自动关闭连接，需要手工关闭
+            </summary>
+            <param name="transaction"></param>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <param name="commandParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReaderTypedParams(System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReaderTypedParams(System.Data.Common.DbConnection,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReaderTypedParams(System.Data.Common.DbTransaction,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.Common.DbConnection,System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.Common.DbConnection,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.Common.DbTransaction,System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.Common.DbTransaction,System.String,System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="parameterValues"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.Common.DbConnection,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalar(System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalarToStr(System.Data.CommandType,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalarToStr(System.Data.CommandType,System.String,System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalarTypedParams(System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalarTypedParams(System.Data.Common.DbConnection,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteScalarTypedParams(System.Data.Common.DbTransaction,System.String,System.Data.DataRow)">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="dataRow"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.String,System.Data.DataSet,System.String[],System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+             <param name="parameterValues"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+             <param name="commandParameters"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.Common.DbConnection,System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.Common.DbConnection,System.String,System.Data.DataSet,System.String[],System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+             <param name="parameterValues"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.Common.DbTransaction,System.String,System.Data.DataSet,System.String[],System.Object[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="spName"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+             <param name="parameterValues"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.Common.DbConnection,System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+             <param name="commandParameters"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.FillDataset(System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.Common.DbParameter[])">
+             <summary>
+            
+             </summary>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="dataSet"></param>
+             <param name="tableNames"></param>
+             <param name="commandParameters"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.GetCachedParameterSet(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="commandText"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.GetSpParameterSet(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.GetSpParameterSet(System.String,System.Boolean)">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="includeReturnValueParameter"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.MakeInParam(System.String,System.Data.DbType,System.Int32,System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="ParamName"></param>
+             <param name="DbType"></param>
+             <param name="Size"></param>
+             <param name="Value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.MakeOutParam(System.String,System.Data.DbType,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="ParamName"></param>
+             <param name="DbType"></param>
+             <param name="Size"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.MakeParam(System.String,System.Data.DbType,System.Int32,System.Data.ParameterDirection,System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="ParamName"></param>
+             <param name="DbType"></param>
+             <param name="Size"></param>
+             <param name="Direction"></param>
+             <param name="Value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.UpdateDataset(System.Data.Common.DbCommand,System.Data.Common.DbCommand,System.Data.Common.DbCommand,System.Data.DataSet,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="insertCommand"></param>
+             <param name="deleteCommand"></param>
+             <param name="updateCommand"></param>
+             <param name="dataSet"></param>
+             <param name="tableName"></param>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.GetSpParameterSet(System.Data.Common.DbConnection,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="spName"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.ExecuteReader(System.Data.Common.DbConnection,System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.Common.DbParameter[],YBB.DBUtils.DbConnectionOwnership)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="transaction"></param>
+             <param name="commandType"></param>
+             <param name="commandText"></param>
+             <param name="commandParameters"></param>
+             <param name="connectionOwnership"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.DbHelper.PrepareCommand(System.Data.Common.DbCommand,System.Data.Common.DbConnection,System.Data.Common.DbTransaction,System.Data.CommandType,System.String,System.Data.Common.DbParameter[],System.Boolean@)">
+            <summary>
+            本次才打开，则mustCloseConnection为true
+            </summary>
+            <param name="command"></param>
+            <param name="connection"></param>
+            <param name="transaction"></param>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <param name="commandParameters"></param>
+            <param name="mustCloseConnection"></param>
+        </member>
+        <member name="P:YBB.DBUtils.DbHelper.Factory">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.#ctor(System.String,YBB.DBUtils.DbProviderType)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString"></param>
+            <param name="providerType"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.ThreadInstance(System.String,YBB.DBUtils.DbProviderType)">
+            <summary>
+            根据内部数据，创建线程缓存的AdoNetHelper子类实例。
+            </summary>
+            <typeparam name="T">AdoNetHelper 的子类</typeparam>
+            <param name="userName">数据库用户名</param>
+            <param name="dbname">数据库实例名</param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.ThreadInstance(System.String,YBB.DBUtils.DbProviderType,System.Boolean)">
+            <summary>
+            根据连接字符串， 创建线程缓存的AdoNetHelper子类实例。
+            </summary>
+            <typeparam name="T">AdoNetHelper 的子类</typeparam>
+            <param name="userName">数据库用户名</param>
+            <param name="dbname">数据库实例名</param>
+            <param name="createIfNull">如果不存在那么创建</param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.CreateInstance(System.String,YBB.DBUtils.DbProviderType)">
+            <summary>
+            根据连接字符串， 创建AdoNetHelper子类实例。
+            </summary>
+            <param name="userName"></param>
+            <param name="dbname"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.DeriveParameters(System.Data.IDbCommand)">
+             <summary>
+            
+             </summary>
+             <param name="cmd"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.MakeParam(System.String,System.Data.DbType,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="ParamName"></param>
+             <param name="dbtype"></param>
+             <param name="Size"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.MakeInParam(System.String,System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="ParamName"></param>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.GetNewConnection">
+            <summary>
+            始终获取一个新的数据库连接。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.OpenNewConnection">
+            <summary>
+            连接数据库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.BeginTrans(System.Data.Common.DbConnection)">
+            <summary>
+            启动Connection()的新事务
+            </summary>
+            <param name="newTrans">是否创建一个新事务</param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.BeginNewTrans(System.Data.Common.DbConnection)">
+            <summary>
+            启动Connection()的新事务
+            </summary>
+            <param name="newTrans">是否创建一个新事务</param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.CreateNewCommand(System.String,System.Data.Common.DbConnection,System.Data.Common.DbTransaction)">
+            <summary>
+            获取或者创建基于Connection()的命令
+            </summary>
+            <param name="newTrans">是否强行创建一个新命令</param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.CreateNewCommand(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            获取或者创建基于Connection()的命令
+            </summary>
+            <param name="sql"></param>
+            <param name="_transInstance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.CreateNewCommand(System.String,System.Data.Common.DbConnection)">
+             <summary>
+            
+             </summary>
+             <param name="sql"></param>
+             <param name="_connInstance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.ExecuteDataset(System.Data.Common.DbCommand)">
+            <summary>
+            执行命令，返回一个DataTable
+            </summary>
+            <param name="_commInstance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.CloseConnection(System.Data.Common.DbConnection)">
+            <summary>
+            关闭一个数据库连接。
+            </summary>
+            <param name="conn"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.CloseDatabase(System.Data.Common.DbConnection)">
+            <summary>
+            关闭一个数据库连接。
+            </summary>
+            <param name="conn"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.OnDbOpenedByUser(System.Data.Common.DbConnection)">
+             <summary>
+            
+             </summary>
+             <param name="conn"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.OnDbClosedByUser(System.Data.Common.DbConnection)">
+             <summary>
+            
+             </summary>
+             <param name="conn"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetHelper.Dispose">
+            <summary>
+            关闭所有数据库连接
+            </summary>
+        </member>
+        <member name="P:YBB.DBUtils.AdoNetHelper.ConnectionString">
+            <summary>
+            连接字符串。
+            </summary>
+        </member>
+        <member name="P:YBB.DBUtils.AdoNetHelper.DbFactory">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:YBB.DBUtils.AdoNetWinHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetWinHelper.Dispose">
+            <summary>
+            释放所有数据库的连接。包括：GetNewConnection(),Connection()创建的数据库连接。
+            </summary>
+        </member>
+        <member name="T:YBB.DBUtils.DbConnectionOwnership">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:YBB.DBUtils.DbConnectionOwnership.Internal">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:YBB.DBUtils.DbConnectionOwnership.External">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:YBB.DBUtils.OdbcHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.OdbcHelper.DeriveParameters(System.Data.IDbCommand)">
+            <summary>
+            <see cref="M:System.Data.Odbc.OdbcCommandBuilder.DeriveParameters(System.Data.Odbc.OdbcCommand)"/>
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="M:YBB.DBUtils.OdbcHelper.MakeParam(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            DbType -> OdbcType 类型是否安全?
+            </summary>
+            <param name="ParamName"></param>
+            <param name="dbType"></param>
+            <param name="Size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.OdbcHelper.DbTypeConvert(System.Data.DbType)">
+            <summary>
+            将DbType转换成OdbcType枚举，确保枚举类型之间转换的安全性
+            同时避免数据库字段类型统一修改带来的巨大修改量
+            http://msdn.microsoft.com/en-us/library/yk72thhd%28VS.80%29.aspx
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="P:YBB.DBUtils.OdbcHelper.DbFactory">
+            <summary>
+            <see cref="F:System.Data.Odbc.OdbcFactory.Instance"/>
+            </summary>
+        </member>
+        <member name="T:YBB.DBUtils.OleDbHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.OleDbHelper.#ctor(System.String,YBB.DBUtils.DbProviderType)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.OleDbHelper.DeriveParameters(System.Data.IDbCommand)">
+            <summary>
+            <see cref="M:System.Data.OleDb.OleDbCommandBuilder.DeriveParameters(System.Data.OleDb.OleDbCommand)"/>
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="M:YBB.DBUtils.OleDbHelper.MakeParam(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            DbType -> OleDbType 类型是否安全?
+            </summary>
+            <param name="ParamName"></param>
+            <param name="dbType"></param>
+            <param name="Size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.OleDbHelper.DbTypeConvert(System.Data.DbType)">
+            <summary>
+            将DbType转换成OracleType枚举，确保枚举类型之间转换的安全性
+            同时避免数据库字段类型统一修改带来的巨大修改量
+            http://msdn.microsoft.com/en-us/library/yk72thhd%28VS.80%29.aspx
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:YBB.DBUtils.OracleHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.OracleHelper.DeriveParameters(System.Data.IDbCommand)">
+            <summary>
+            <see cref="M:System.Data.OracleClient.OracleCommandBuilder.DeriveParameters(System.Data.OracleClient.OracleCommand)"/>
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="M:YBB.DBUtils.OracleHelper.MakeParam(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            构造<see cref="T:System.Data.OracleClient.OracleParameter"/>对象
+            </summary>
+            <param name="ParamName"></param>
+            <param name="Dbtype"></param>
+            <param name="Size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.OracleHelper.DbTypeConvert(System.Data.DbType)">
+            <summary>
+            将DbType转换成OracleType枚举，确保枚举类型之间转换的安全性
+            同时避免数据库字段类型统一修改带来的巨大修改量
+            http://msdn.microsoft.com/en-us/library/yk72thhd%28VS.80%29.aspx
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:YBB.DBUtils.OracleHelper_ManagedODP">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.OracleHelper_ManagedODP.DeriveParameters(System.Data.IDbCommand)">
+            <summary>
+            <see cref="M:Oracle.ManagedDataAccess.Client.OracleCommandBuilder.DeriveParameters(Oracle.ManagedDataAccess.Client.OracleCommand)"/>
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="M:YBB.DBUtils.OracleHelper_ManagedODP.MakeParam(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            构造<see cref="T:Oracle.ManagedDataAccess.Client.OracleParameter"/>对象
+            </summary>
+            <param name="ParamName"></param>
+            <param name="Dbtype"></param>
+            <param name="Size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.OracleHelper_ManagedODP.DbTypeConvert(System.Data.DbType)">
+            <summary>
+            将DbType转换成OracleType枚举，确保枚举类型之间转换的安全性
+            同时避免数据库字段类型统一修改带来的巨大修改量
+            http://msdn.microsoft.com/en-us/library/yk72thhd%28VS.80%29.aspx
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:YBB.DBUtils.SqlHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.SqlHelper.DeriveParameters(System.Data.IDbCommand)">
+            <summary>
+            <see cref="!:OracleCommandBuilder.DeriveParameters"/>
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="M:YBB.DBUtils.SqlHelper.MakeParam(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            构造<see cref="!:OracleParameter"/>对象
+            </summary>
+            <param name="ParamName"></param>
+            <param name="Dbtype"></param>
+            <param name="Size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YBB.DBUtils.SqlHelper.DbTypeConvert(System.Data.DbType)">
+            <summary>
+            将DbType转换成OracleType枚举，确保枚举类型之间转换的安全性
+            同时避免数据库字段类型统一修改带来的巨大修改量
+            http://msdn.microsoft.com/en-us/library/yk72thhd%28VS.80%29.aspx
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:YBB.DBUtils.AdoNetConnInstanceHelper">
+             <summary>
+            同一线程中，无论实例化多少个AdoNetConnInstanceHelper，Conn都是同一个
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetConnInstanceHelper.#ctor(YBB.DBUtils.AdoNetHelper)">
+             <summary>
+            
+             </summary>
+             <param name="helper"></param>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetConnInstanceHelper.CloseOracle">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:YBB.DBUtils.AdoNetConnInstanceHelper.Dispose">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:YBB.DBUtils.AdoNetConnInstanceHelper.Helper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:YBB.DBUtils.AdoNetConnInstanceHelper.Conn">
+             <summary>
+            打开新连接，或获取线程缓存连接。
+             </summary>
+        </member>
+        <member name="T:YBB.DBUtils.ConnectTypes">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:YBB.DBUtils.ConnectTypes.ADO">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:YBB.DBUtils.ConnectTypes.ADONet">
+             <summary>
+            
+             </summary>
+        </member>
+    </members>
+</doc>

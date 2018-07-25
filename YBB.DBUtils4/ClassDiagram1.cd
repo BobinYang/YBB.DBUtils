@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="YBB.DBUtils.AdoHelper" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAAAACAQJQEAAAAgCAAAAACAAAAAACCAAAAABAA=</HashCode>
+      <FileName>AdoHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="YBB.DBUtils.AdoNetHelper">
+    <Position X="3.75" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAgABEAIACAQJQEgABAgiBAAAACAIAAAgCCAAAAAAEE=</HashCode>
+      <FileName>AdoNetHelper\AdoNetHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="YBB.DBUtils.DbHelper">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CGAAAAiAEECAAKgkIBQEhEDAgAAAAAABgCBAAAIAAAM=</HashCode>
+      <FileName>AdoNetHelper\DbHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="YBB.DBUtils.OleDbHelper">
+    <Position X="5" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAAAAAAE=</HashCode>
+      <FileName>AdoNetHelper\OleDbHelper.cs</FileName>
+      <NewMemberFileName>OdbcHelper.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="YBB.DBUtils.OracleHelper">
+    <Position X="2.75" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAAAAAAE=</HashCode>
+      <FileName>AdoNetHelper\OracleHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="YBB.DBUtils.OdbcHelper">
+    <Position X="0.5" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAgAAAAAAAAAE=</HashCode>
+      <FileName>AdoNetHelper\OdbcHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="YBB.DBUtils.OracleHelper_ManagedODP">
+    <Position X="7.25" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAAAAAAE=</HashCode>
+      <FileName>AdoNetHelper\OracleHelper_ManagedODP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="YBB.DBUtils.IThreadInstance">
+    <Position X="10.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IThreadInstance.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="YBB.DBUtils.DbConnectionOwnership">
+    <Position X="10.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>AdoNetHelper\DbHelper.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="YBB.DBUtils.ConnectTypes">
+    <Position X="10.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
