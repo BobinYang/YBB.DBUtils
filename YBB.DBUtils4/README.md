@@ -1,11 +1,8 @@
-﻿# YBB.DBUtils
-
+# YBB.DBUtils
 通用数据访问类库，兼容ADO、ADO.NET方式访问。
-
 利用ProviderFactory工厂方法，支持Oracle（不需要安装客户端）、SQL Server、OleDb和ODBC等数据库访问。
 
 //用法：
-
 // 0、初始化线程缓存AdoNetHelper 类：
 
 Oracle:
