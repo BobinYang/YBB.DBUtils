@@ -1,37 +1,150 @@
-## Welcome to GitHub Pages
+﻿# YBB.DBUtils
 
-You can use the [editor on GitHub](https://github.com/BobinYang/YBB.DBUtils/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+通用数据访问类库，兼容ADO、ADO.NET方式访问。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+利用ProviderFactory工厂方法，支持Oracle（不需要安装客户端）、SQL Server、OleDb和ODBC等数据库访问。
 
-### Markdown
+//用法：
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+// 0、初始化线程缓存AdoNetHelper 类：
 
-```markdown
-Syntax highlighted code block
+Oracle:
+           using (AdoNetHelper   Db = AdoNetHelper.ThreadInstance("data source=*:1521/orcl;user id=*;password=*;", DbProviderType.Oracle_ManagedODP)))
+            {
+            。。。。。
+            }
 
-# Header 1
-## Header 2
-### Header 3
+SQL Server:          
+           using (AdoNetHelper   Db = AdoNetHelper.ThreadInstance("data source=*;user id=sa;password=*;Initial Catalog=*;", DbProviderType.SqlServer)))
+            {
+            。。。。。
+            }//Dispose可关闭所有内部连接。
+            
+//1、常用的命令：
+            Db.OpenNewConnection()
+            Db.CreateNewCommand(sql, conn)
+            Db.BeginNewTrans(conn)
+            Db.CreateNewCommand(sql, trans);
+            Db.MakeInParam(":a", **)
+			DataSet ds = Db.ExecuteDataset(conn, "GetOrders", 24, 36); 
+            以及所有DbHelper中的方法。
 
-- Bulleted
-- List
+ 
+//2、打开连接和创建命令，执行读数据
 
-1. Numbered
-2. List
+            string  sql = "select 1 from  **";
+            DbConnection conn = null;
+            try
+            {
+                conn  = Db.OpenNewConnection();
+                DbCommand command = Db.CreateNewCommand(sql, conn);
+                DbDataReader  dr = command.ExecuteReader(); //   Convert.ToInt32(command.ExecuteScalar()); //   DataTable dt1 = Db.ExecuteDataset(command);
+                if (rd.HasRows)
+                {
+                    dr.Close();
+                    return true;
+                }
+                // while (dr.Read())
+                //{
+                //       List1.Add(dr[0].ToString().Trim());
+                //  }
+                dr.Close();
+            }
+            finally
+            {
+                Db.CloseConnection(conn);
+            }
 
-**Bold** and _Italic_ and `Code` text
+//3、带参数执行命令
 
-[Link](url) and ![Image](src)
-```
+            sql = "insert into table1 (column1,column2) values (:a,:b)";//sql server为@符号
+            DbConnection conn = Db.Conn;
+            using (DbCommand command = Db.CreateNewCommand(sql, conn))
+            {
+                command.Parameters.Add(Db.MakeInParam(":a", **));
+                command.Parameters.Add(Db.MakeInParam(":b", **));
+                command.ExecuteNonQuery();
+            }
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+//4、利用事务处理更新操作。
 
-### Jekyll Themes
+            int rows = 0;
+            DbConnection   conn  = Db.OpenNewConnection();
+            DbTransaction trans = Db.BeginNewTrans(conn);
+            DbCommand command = Db.CreateNewCommand(sql, trans);
+            try
+            {  
+                sql = "delete **";
+                command.CommandText = sql;
+                rows = command.ExecuteNonQuery();
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BobinYang/YBB.DBUtils/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+                sql = "update  **";
+                command.CommandText = sql;
+                rows = command.ExecuteNonQuery();
+             
+                trans.Commit();
+            }
+            catch (Exception)
+            {
+                if (trans != null)
+                {
+                    trans.Rollback();
+                }
+                throw;
+            }
+            return rows;
 
-### Support or Contact
+//5、插入操作返回最新值。
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+            string lastId = "";
+            DbTransaction trans = null;
+            try
+            {
+                DbConnection conn = Db.Conn;
+                trans = Db.BeginNewTrans(conn);
+
+                sql = "insert intotable1 (column1,column2) values (*,*) RETURNING ID into :recid ";
+
+                command = Db.CreateNewCommand(sql, trans);
+                DbParameter paralastId = Db.MakeOutParam(":recid", DbType.String, 20);
+                paralastId.Direction = ParameterDirection.ReturnValue;
+                command.Parameters.Add(paralastId);
+
+                command.ExecuteNonQuery();
+                command.Parameters.Clear();
+                lastId = paralastId.Value.ToString();
+
+                trans.Commit();
+            }
+            catch (Exception)
+            {
+                if (trans != null)
+                {
+                    trans.Rollback();
+                }
+                throw;
+            }
+
+//6、处理存储过程的输入输出参数。
+
+            string sql = "sp***";
+            DbConnection conn = Db.Conn;
+            command = Db.CreateNewCommand(sql, conn);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add(Db.MakeInParam("line", Line));
+            command.Parameters.Add(Db.MakeInParam("model", PartNumber));
+
+            DbParameter qty = Db.MakeOutParam("qty", 0);
+            qty.Direction = ParameterDirection.Output;
+            command.Parameters.Add(qty);
+
+            command.ExecuteNonQuery();
+
+            returnValue = Convert.ToInt32(((OracleDecimal)(command.Parameters["qty"].Value)).Value);
+            command.Parameters.Clear();
+            command.CommandType = CommandType.Text;
+            
+//7、类图如下：
+
+![](https://github.com/BobinYang/YBB.DBUtils/blob/master/screenshots/ClassDiagram1.png?raw=true) 
